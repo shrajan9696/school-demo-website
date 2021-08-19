@@ -1,0 +1,193 @@
+<html>
+
+<head>
+
+<title>JS Validation for other types of form input fields</title>
+
+<script type="text/javascript">
+
+  function submitClick( ) //function shows message after submitting information
+
+  {
+
+  alert("Thank you for your time! Your details have been submitted!");
+
+  }
+
+
+  function formValidation ( )
+
+  {
+
+  flag = true;
+
+  if (document.myForm.user_name.value == "" )
+
+  {
+
+  alert ( "Please fill in your Name!" );
+
+  flag = false;
+
+  }
+
+  // Validate letters only as Name
+  if (!/^[a-zA-Z]*$/g.test(document.myForm.user_name.value))
+
+  {
+
+  alert("Enter alphabetic characters as Name!");
+
+  flag = false;
+
+  }
+
+  // Validate emails
+ if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)* (\.\w{2,3})+$/.test(myForm.user_email.value))  //Regular expressions to validate email
+
+ {
+
+ alert("Enter Valid Email Address!");
+
+ flag = false;
+
+ }
+
+ // Validate Phone number
+
+ flag = true;
+
+ if (document.myForm.user_phone.value == "" )
+
+ {
+
+ alert ( "Please fill in your Phone Number!" );
+
+ flag = false;
+
+ }
+
+
+ if (!/^[0-9]*$/g.test(myForm.user_phone.value))
+
+ {
+
+ alert("Enter numeric values as Phone Number!");
+
+ flag = false;
+
+ }
+
+
+ if ((document.myForm.userGender[0].checked == false) &&  (document.myForm.userGender[1].checked == false ) )
+
+ {
+
+ alert ( "Please select your gender!" );
+
+ flag = false;
+
+ }
+
+ if (document.myForm.userAge.selectedIndex == 0 )
+
+ {
+
+ alert ( "Please select your Age from the drop-down list!" );
+
+ flag=false;
+
+ }
+
+ if (document.myForm.termsAndConditions.checked == false )
+
+ {
+
+ alert ( "Please check the Terms and Conditions box!" );
+
+ flag= false;
+
+ }
+
+ return flag;
+
+ }
+
+ </script>
+ <style>
+input[type=text]
+
+{
+border:2px solid red;
+font-size:20px;
+background-color: #3CBC8D;
+  color: white;
+  
+
+}
+p{
+font-size:20px;
+}
+select {
+  width: auto;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+*{
+background-color:light blue;
+}
+ </style>
+
+ </head>
+
+ <body bgcolor = "#FFFFFF">
+
+ <form name="myForm" method="post" onSubmit=" return formValidation( );">
+
+ <h1>Please fill out your details below:</h1>
+
+ <p>name: <input type="text" name="user_name" placeholder="enter your name"  ></p>
+
+ <p>Email: <input type="text" name="user_email" placeholder="enter your email" required></p>
+
+ <p>Phone: <input type="text" name="user_phone" value="enter phone number"></p>
+
+ <p>Gender: <input type="radio" name="userGender" value="Male">Male
+
+ &nbsp; <input type="radio" name="userGender" value="Female">Female</p>
+
+ <p>Age:
+
+ <select name="userAge" value="userAge">
+
+ <option value="" style="font-size:20px">Please select your age:</option>
+
+ <option value="0-17 years">0-17 years</option>
+
+ <option value="18-29 years">18-29 years</option>
+
+ <option value="30-40 years">30-40 years</option>
+
+<option value="40-64 years">40-64 years</option>
+
+<option value="65+ years">65+ years</option>
+
+</select>
+
+<p>Please tick the checkbox if you agree with our Terms and Conditions:
+
+<input type="checkbox" name="termsAndConditions" value="Yes"> Yes
+<p>upload file</p>
+<label for="myfile"></label>
+<input type="file" name="myfile">
+
+<p><input type="submit" name="send" value="Submit Details" onClick="submitClick( )"></p>
+
+
+</form>
+
+</body>
+
+</html>
